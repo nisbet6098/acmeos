@@ -1,0 +1,118 @@
+/* --- Root Variables for Easy Theme Tweaks --- */
+:root {
+    --bg-color: #0a0a0a;
+    --terminal-green: #00ff41;
+    --terminal-glow: rgba(0, 255, 65, 0.6);
+    --window-border: #333;
+    --header-bg: #1a1a1a;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--terminal-green);
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* --- Window Wrapper --- */
+.window-frame {
+    width: 100%;
+    max-width: 900px;
+    background: #000;
+    border: 1px solid var(--window-border);
+    border-radius: 8px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 15px rgba(0,255,65,0.1);
+    overflow: hidden;
+    position: relative;
+    z-index: 5;
+}
+
+/* --- Header / Title Bar --- */
+.window-header {
+    background: var(--header-bg);
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--window-border);
+}
+
+.window-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+.window-title {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #888;
+    letter-spacing: 1px;
+    margin-right: 40px; /* Balance the dots */
+}
+
+/* --- Terminal Area --- */
+#terminal-container {
+    padding: 20px;
+    height: 500px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #333 #000;
+}
+
+#output {
+    white-space: pre-wrap;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+#input-area {
+    display: flex;
+    align-items: center;
+}
+
+.prompt {
+    font-weight: bold;
+    margin-right: 10px;
+    white-space: nowrap;
+}
+
+#user-input {
+    background: transparent;
+    border: none;
+    color: var(--terminal-green);
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    width: 100%;
+    text-shadow: 0 0 5px var(--terminal-glow);
+}
+
+/* --- CRT & Scanline Overlay --- */
+.crt-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+                linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+    background-size: 100% 3px, 3px 100%;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.line, .prompt {
+    text-shadow: 0 0 5px var(--terminal-glow);
+}
